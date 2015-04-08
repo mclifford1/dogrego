@@ -14,3 +14,8 @@ dob: DateTime.strptime("09/14/2009", "%m/%d/%Y"))
 Dog.create!(name: 'Fido',
 breed: 'Terrier',
 dob: DateTime.strptime("02/23/2011", "%m/%d/%Y"))
+
+User.delete_all
+
+# Create an admin user
+User.create!(username: 'admin', password: 'admin', name: 'admin', address: 'somewhere', email: 'mark.clifford.mail@gmail.com', superuser: true )
