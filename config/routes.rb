@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'register/index'
+
   resources :dog_owners
 
   get 'admin' => 'admin#index'
