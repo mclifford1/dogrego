@@ -1,8 +1,8 @@
 class Dog < ActiveRecord::Base
 	validates :name, :breed, :dob, presence: true
-	has_one: dog_owner
-	
-	before_destroy :ensure_not_referenced_by_any_dog_owner
+	#has_one: dog_owner
+
+	#before_destroy :ensure_not_referenced_by_any_dog_owner
 
 	private
 

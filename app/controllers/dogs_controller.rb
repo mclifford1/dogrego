@@ -24,11 +24,16 @@ class DogsController < ApplicationController
   # POST /dogs
   # POST /dogs.json
   def create
+    owner = User.find_by(id: session[:user_id])
     @dog = Dog.new(dog_params)
 
     respond_to do |format|
       if @dog.save
-        format.html { redirect_to @dog, notice: 'Dog was successfully created.' }
+        format.html { 
+          #redirect_to @dog
+          redirect_to new_dog_owner_path(owner_id: owner.id, dog_id: @dog.id), 
+          notice: 'Dog was successfully created.' 
+        }
         format.json { render :show, status: :created, location: @dog }
       else
         format.html { render :new }
