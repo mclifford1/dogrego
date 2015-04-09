@@ -20,7 +20,10 @@
 			</ul>
 
 			<% if session[:user_id] %>
-				<%= button_to 'Logout', logout_path, method: :delete %>
+				<div id="user">
+					<%= "User: #{User.find_by(id: session[:user_id]).username}" %>
+					<%= button_to 'Logout', logout_path, method: :delete %>
+				</div>
 			<% end %>
 		</div>
 	</div>	

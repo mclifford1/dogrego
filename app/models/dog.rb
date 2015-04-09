@@ -1,8 +1,7 @@
 class Dog < ActiveRecord::Base
 	validates :name, :breed, :dob, presence: true
-	#has_one: dog_owner
 
-	#before_destroy :ensure_not_referenced_by_any_dog_owner
+	before_destroy :ensure_not_referenced_by_any_dog_owner
 
 	def get_expiry_date
 		@record = DogOwner.find_by(dog_id: id)
@@ -17,7 +16,10 @@ class Dog < ActiveRecord::Base
 
 	# Check that we are not going to break a reference
 	def ensure_not_referenced_by_any_dog_owner
-		if dog_owner?
+
+		# Check for a link to an owner
+		@record = DogOwner.find_by(dog_id: id)
+		if @record
 			errors.add(:base, 'Dog owner present')
 			return false
 		else

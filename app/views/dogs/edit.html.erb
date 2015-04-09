@@ -3,4 +3,4 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @dog %> |
-<%= link_to 'Back', dogs_path %>
+<%= link_to 'Back', User.home_url(User.find_by(id: session[:user_id])) %>

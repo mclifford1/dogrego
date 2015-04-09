@@ -23,7 +23,7 @@ Rails.application.configure do
     domain: "mail.live.com",
     authentication: "plain",
     user_name: "jarvissh@hotmail.com",
-    password: "octG3rian$",
+    password: "secret",
     enable_starttls_auto: true
   }
 

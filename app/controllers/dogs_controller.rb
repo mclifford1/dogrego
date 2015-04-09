@@ -59,9 +59,17 @@ class DogsController < ApplicationController
   # DELETE /dogs/1
   # DELETE /dogs/1.json
   def destroy
+
+    # Remove link to owner
+    @record = DogOwner.find_by(dog_id: @dog.id)
+    if @record
+      @record.destroy
+    end
+
+    # Remove dog
     @dog.destroy
     respond_to do |format|
-      format.html { redirect_to dogs_url, notice: 'Dog was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: 'Dog was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

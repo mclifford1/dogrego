@@ -16,4 +16,4 @@
 </p>
 
 <%= link_to 'Edit', edit_dog_path(@dog) %> |
-<%= link_to 'Back', dogs_path %>
+<%= link_to 'Back', User.home_url(User.find_by(id: session[:user_id])) %>
