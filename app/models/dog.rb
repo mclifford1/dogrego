@@ -4,6 +4,15 @@ class Dog < ActiveRecord::Base
 
 	#before_destroy :ensure_not_referenced_by_any_dog_owner
 
+	def get_expiry_date
+		@record = DogOwner.find_by(dog_id: id)
+		if @record.registeredtill
+			return @record.registeredtill.to_formatted_s(:long)
+		else
+			return "Never"
+		end
+	end
+
 	private
 
 	# Check that we are not going to break a reference

@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'register/index'
+  #get 'register/index'
+  #post 'register/update'
+
+  controller :register do
+    get 'register' => :index
+    post 'register' => :update
+  end
+
 
   resources :dog_owners
 

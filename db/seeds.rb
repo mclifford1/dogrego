@@ -19,3 +19,8 @@ User.delete_all
 
 # Create an admin user
 User.create!(username: 'admin', password: 'admin', name: 'admin', address: 'somewhere', email: 'mark.clifford.mail@gmail.com', superuser: true )
+
+Regoptions.delete_all
+Regoptions.create!(months: 3, price: 25.00)
+Regoptions.create!(months: 6, price: 65.00)
+Regoptions.create!(months: 12, price: 85.00)
