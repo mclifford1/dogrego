@@ -9,7 +9,7 @@ class Dog < ActiveRecord::Base
 		if @record.registeredtill
 			return @record.registeredtill.to_formatted_s(:long)
 		else
-			return "Never"
+			return "Expired"
 		end
 	end
 
