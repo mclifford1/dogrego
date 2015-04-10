@@ -3,6 +3,7 @@ require 'test_helper'
 class DogsControllerTest < ActionController::TestCase
   setup do
     @dog = dogs(:one)
+    @user = users(:one)
   end
 
   test "should get index" do
@@ -17,11 +18,16 @@ class DogsControllerTest < ActionController::TestCase
   end
 
   test "should create dog" do
+    session[:user_id] = @user.id
+
     assert_difference('Dog.count') do
       post :create, dog: { breed: @dog.breed, dob: @dog.dob, name: @dog.name }
     end
 
-    assert_redirected_to dog_path(assigns(:dog))
+    assert_redirected_to new_dog_owner_path(owner_id: @user.id,dog_id: assigns(:dog).id)
+    #new_dog_owner_path(owner_id: owner.id, dog_id: @dog.id)
+
+    session[:user_id] = nil    
   end
 
   test "should show dog" do
@@ -44,6 +50,6 @@ class DogsControllerTest < ActionController::TestCase
       delete :destroy, id: @dog
     end
 
-    assert_redirected_to dogs_path
+    assert_redirected_to users_path
   end
 end

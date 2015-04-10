@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     post 'register' => :update
   end
 
-
   resources :dog_owners
 
   get 'admin' => 'admin#index'
